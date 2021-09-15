@@ -1,0 +1,32 @@
+name: Publish Actions
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  publish:
+    name: Publish to npm @next
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure COmmitter
+        run: |
+          git config user.name "Release Bot"
+          git config user.email "<>"{}
+      - name: Run release chores
+        uses: qzb/standard-version@v1
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+      - name: Install modules
+        run: npm i
+      - name: Bootstrap packages
+        run: npx lerna bootstrap
+      - name: Build
+        run: npx lerna run build
+      - name: Publish components to npm
+        run: npm publish --tag next packages/astro-web-components/dist
+        with:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
