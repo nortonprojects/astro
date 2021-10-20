@@ -25,6 +25,6 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Bump
-        run: "npx lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'"
+        run: "npx lerna version --yes --conventional-commits --message 'chore(release): publish'"
       - name: Publish
         run: npx lerna publish from-package --yes
