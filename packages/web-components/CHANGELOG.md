@@ -1,5 +1,14 @@
 # @astrouxds/astro-web-components
 
+## 7.3.1
+
+### Patch Changes
+
+-   b2207457: rux-global-status-bar add parts for app-meta and default slot styling
+-   2999f861: rux-tag fixed an issue with default slot and conditional rendering
+-   914c2672: fix(rux-pop-up) move aria-hidden to describe the pop up itself rather than the whole web component
+-   dc912d14: Updated border styles for light theme version of rux-notification.
+
 ## 7.3.0
 
 ### Minor Changes
